@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.ssm.mapper.ItemsMapper">
+<!-- 查询所有商品 -->
+<select id="findAllItems"  resultType="cn.itcast.ssm.po.ItemsCustom">
+select * from items
+</select>
+
+<!-- 查询一个商品信息 -->
+<select id="selectItemsById" parameterType="int" resultType="cn.itcast.ssm.po.ItemsCustom">
+ select * from items where id=#{id}
+</select>
+
+<!-- 修改商品信息 -->
+<update id="updateItemsById" parameterType="ItemsCustom">
+ update items
+    set name = #{name},
+      price = #{price},
+      detail=#{detail},
+      pic = #{pic},
+      createtime = #{createtime},
+      classification=#{classification}
+    where id = #{id}
+
+</update>
+
+<!-- 删除商品信息 -->
+<delete id="deleteItemsById" parameterType="ItemsCustom">
+delete from items where id=#{id}
+</delete>
+</mapper>
